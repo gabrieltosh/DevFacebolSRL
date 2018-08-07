@@ -4,10 +4,11 @@
     <div class="card-header">
         <div class="row">
         	<div class="col-sm-6">
-        		<h2><strong>paisS REGISTRADAS</strong></h2>
+        		<h2><strong>PAISES REGISTRADAS</strong></h2>
         	</div>
         	<div class="col-sm-6">
         		<div class="pull-right">
+        			<br>
         			<a href="{{route('pais.create')}}" class="btn btn-info"><i class="zmdi zmdi-plus"></i> Nuevo Registro</a>
         		</div>
         	</div>

@@ -51,7 +51,8 @@ class Institucion extends Model
       'benplan5',
       'tituloequipo',
       'desequipo',
-      'tituloempresa'
+      'tituloempresa',
+      'visitas'
     ];
     public function setImagenAttribute($imagen){
         if(! empty($imagen)){
@@ -78,13 +79,6 @@ class Institucion extends Model
         if(! empty($imagen)){
               $name = Carbon::now()->second.$imagen->getClientOriginalName();
               $this->attributes['banner3'] = $name;
-              \Storage::disk('institucion')->put($name, \File::get($imagen));
-        }
-    }
-    public function setImgtrabajaAttribute($imagen){
-        if(! empty($imagen)){
-              $name = Carbon::now()->second.$imagen->getClientOriginalName();
-              $this->attributes['imgtrabaja'  ] = $name;
               \Storage::disk('institucion')->put($name, \File::get($imagen));
         }
     }

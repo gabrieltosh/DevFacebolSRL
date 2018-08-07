@@ -18,7 +18,7 @@ class CreateProductosTable extends Migration
             $table->integer('empresa_id')->unsigned();
             $table->string('nombre');
             $table->text('descripcion');
-            $table->decimal('precio');
+            $table->string('precio');
             $table->string('imagen');
             $table->boolean('activo')->default(1);
             $table->decimal('descuento');

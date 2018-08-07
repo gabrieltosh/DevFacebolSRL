@@ -53,19 +53,6 @@
                 <h4 class="m-0 c-white">Imagen slider 3</h4>
             </div>
         </div>
-        <div class="pmo-pic">
-            <div class="p-relative">
-                <a href="#">
-                    <img class="img-responsive" src="{{asset('imagen/institucion/'.$institucion->imgtrabaja)}}" alt="">
-                </a>
-                <a href="#"  data-toggle="modal" data-target="#modal-imgtrabaja" class="pmop-edit">
-                    <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Editar Imagen</span>
-                </a>
-            </div>
-            <div class="pmo-stat">
-                <h4 class="m-0 c-white">Imagen Trabaja</h4>
-            </div>
-        </div>
     </div>
     @include('panel.institucion.modals-imagen')
     <div class="pm-body clearfix">
@@ -254,6 +241,10 @@
                         <dt>Descripcion</dt>
                         <dd>{!!$institucion->trabaja!!}</dd>
                     </dl>
+                     <dl class="dl-horizontal">
+                        <dt>Video</dt>
+                        <dd>{!!$institucion->imgtrabaja!!}</dd>
+                    </dl>
                 </div>
 
                 <div class="pmbb-edit">
@@ -270,6 +261,14 @@
                         <dd>
                           <div class="fg-line">
                         	{!!Form::textarea('trabaja',$institucion->trabaja,['class'=>'form-control','placeholder'=>'Descripcion','rows'=>5])!!}
+                           </div>
+                        </dd>
+                    </dl>
+                     <dl class="dl-horizontal">
+                       <dt class="p-t-10">Video</dt>
+                        <dd>
+                          <div class="fg-line">
+                            {!!Form::text('imgtrabaja',$institucion->imgtrabaja,['class'=>'form-control','placeholder'=>'Id del Video'])!!}
                            </div>
                         </dd>
                     </dl>

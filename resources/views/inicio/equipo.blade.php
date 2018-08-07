@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   
-<!-- Mirrored from agmstudio.io/themes/material-style/2.2.2/page-team2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Mar 2018 23:12:15 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#333">
     <title>Facebol</title>
-    <meta name="description" content="Material Style Theme">
+    @include('inicio.partes.meta')    
+    
     @include('inicio.partes.styles.css')
     <!--[if lt IE 9]>
         <script src="assets/js/html5shiv.min.js"></script>
@@ -44,7 +45,7 @@
           <div class="col-lg-4 col-sm-6">
             <div class="card mt-4 card-info wow zoomInUp animation-delay-7">
               <div class="ms-hero-bg-info ms-hero-img-city">
-                <img src="{{asset('imagen')}}/{{$equipo->imagen}}" alt="..." class="img-avatar-circle"> </div>
+                <img src="{{asset('imagen/equipos')}}/{{$equipo->imagen}}" alt="..." class="img-avatar-circle"> </div>
               <div class="card-body pt-6 text-center">
                 <h4 class="color-info">{{$equipo->nombre}}</h3>
                 <h4 class="color-warning">{{$equipo->cargo}}</h3>
@@ -74,5 +75,4 @@
     @include('inicio.partes.styles.js')
   </body>
 
-<!-- Mirrored from agmstudio.io/themes/material-style/2.2.2/page-team2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Mar 2018 23:12:15 GMT -->
 </html>

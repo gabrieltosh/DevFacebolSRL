@@ -37,7 +37,7 @@
           <ul id="sc4" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch4" data-parent="#slidebar-menu">
             @foreach($categorias as $categoria)
             <li>
-              <a href="{{route('categoria',$categoria->id)}}">{{$categoria->nombre}}</a>
+              <a href="{{route('categoria',$categoria->slug)}}">{{$categoria->nombre}}</a>
             </li>
             @endforeach
             <li>
@@ -49,7 +49,7 @@
           <ul id="sc5" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch5" data-parent="#slidebar-menu">
             @foreach($ciudades as $ciudad)
             <li>
-              <a href="{{route('ciudad',$ciudad->id)}}">{{ucwords($ciudad->nombre)}}</a>
+              <a href="{{route('ciudad',$ciudad->slug)}}">{{ucwords($ciudad->nombre)}}</a>
             </li>
             @endforeach
             <li>
@@ -71,6 +71,7 @@
             <a class="link" href="{{route('contactanos')}}">
             <i class="zmdi zmdi-accounts-alt"></i> Contactanos</a>
         </li>
+        
       </ul>
     </div>
   </div>

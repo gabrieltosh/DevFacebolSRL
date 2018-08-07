@@ -31,7 +31,7 @@
                 <ul class="dropdown-menu dropdown-menu-left">
                   @foreach($categorias as $categoria)
                   <li>
-                    <a class="dropdown-item" href="{{route('categoria',$categoria->id)}}">{{$categoria->nombre}}</a>
+                    <a class="dropdown-item" href="{{route('categoria',$categoria->slug)}}">{{$categoria->nombre}}</a>
                   </li>
                  @endforeach
                 </ul>
@@ -41,7 +41,7 @@
                   <ul class="dropdown-menu dropdown-menu-left">
                     @foreach($ciudades as $ciudad)
                     <li>
-                      <a class="dropdown-item" href="{{route('ciudad',$ciudad->id)}}">{{$ciudad->nombre}}</a>
+                      <a class="dropdown-item" href="{{route('ciudad',$ciudad->slug)}}">{{$ciudad->nombre}}</a>
                     </li>
                    @endforeach
                   </ul>

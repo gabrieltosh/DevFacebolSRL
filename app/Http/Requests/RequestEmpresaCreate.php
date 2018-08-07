@@ -26,7 +26,7 @@ class RequestEmpresaCreate extends FormRequest
         return [
             'usuario_id'=>'required|numeric',
             'nombre'=>'required',
-            'telefono'=>'required|max:9|min:7',
+            'telefono'=>'required',
             'ciudad_id'=>'required|numeric',
             'categoria_id'=>'required',
             'descripcion'=>'required|string',

@@ -8,6 +8,7 @@
         	</div>
         	<div class="col-sm-6">
         		<div class="pull-right">
+        			<br>
         			<a href="{{route('ciudades.create')}}" class="btn btn-info"><i class="zmdi zmdi-plus"></i> Nuevo Registro</a>
         		</div>
         	</div>

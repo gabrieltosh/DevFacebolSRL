@@ -22,8 +22,8 @@ class CreateInstitucionsTable extends Migration
             $table->text('trabaja');
             $table->text('desEmpresa');
             $table->string('direccion');
-            $table->integer('celular');
-            $table->integer('telefono');
+            $table->string('celular');
+            $table->string('telefono');
             $table->string('email');
             $table->string('facebook');
             $table->string('twitter');
@@ -59,6 +59,7 @@ class CreateInstitucionsTable extends Migration
             $table->string('tituloequipo');
             $table->text('desequipo');
             $table->string('tituloempresa');
+            $table->double('visitas');
             $table->timestamps();
         });
     }

@@ -18,19 +18,25 @@ use App\Actividad;
 use App\Ciudad;
 use Session;
 use Alert;
+
 use App\Http\Requests\RequestUsuarioCreate;
+
 class controllerInicio extends Controller
 {
     public function __construct()
     {
-        if(!Session::has('datos')) 
+        if(!Session::has('datos'))
          {
          Session::put('datos',array());
          }
     }
     public function Inicio()
-    { 
-        //Alert::success('Error Title', 'Error Message');
+    {
+        $visitas=Institucion::find(1);
+        $n=$visitas->visitas+1;
+        $visitas->fill([
+            'visitas'=>$n,
+        ])->save();
         $plan=Planes::first();
         $planDetalle=PlanesDetalle::all();
         $institucion=Institucion::first();
@@ -38,32 +44,40 @@ class controllerInicio extends Controller
         $planesDetalle = PlanesDetalle::all();
         $categorias=Categoria::all();
         $ciudades=Ciudad::all();
-        return view('inicio.index',compact('planes','planesDetalle','categorias','institucion','plan','planDetalle','ciudades'));
+        $countEmpresas=Empresa::count('id');
+        $countUsers=User::count('id');
+        return view('inicio.index',compact('planes','planesDetalle','categorias','institucion','plan','planDetalle','ciudades','countEmpresas','countUsers'));
     }
-    public function detalleEmpresa($id)
+    public function detalleEmpresa($slug)
     {
         $institucion=Institucion::first();
         $categorias=Categoria::all();
-        $ciudades=Ciudad::all();        
+        $ciudades=Ciudad::all();
         $actividad = Actividad::all();
-        $empresa = Empresa::where('id',$id)->first();
+        $empresa = Empresa::where('slug',$slug)->first();
         return view('inicio.empresa-detalle',compact('empresa','categorias','institucion','ciudades'));
     }
     public function suscribir(Request $datos)
     {
-        Email::create([
-            'email'=>$datos->email
-        ]);
-        $name = '/FaceBol.pptx';
-        $path = base_path().'/public_html/imagen/'.$name;
-        //$path = public_path('imagen').$name;
-        $email = $datos->email;
-        Mail::send('emails.emailPost',$datos->all(), function ($message) use ($path,$email) {
-            $message->to($email,$email)
-            ->subject('Acerca de Facebol');
-            $message->attach($path);
-        });
-        return redirect()->route('inicio');
+        if(is_null($datos->email))
+        {
+            return redirect()->route('inicio');
+        }else
+        {
+            Email::create([
+                'email'=>$datos->email
+            ]);
+            $name = '/FaceBol.pptx';
+            $path = base_path().'/public_html/imagen/'.$name;
+            //$path = public_path('imagen').$name;
+            $email = $datos->email;
+            Mail::send('emails.emailPost',$datos->all(), function ($message) use ($path,$email) {
+                $message->to($email,$email)
+                ->subject('Acerca de Facebol');
+                $message->attach($path);
+            });
+            return redirect()->route('inicio');
+        }
     }
     public function emailPost(Request $datos)
     {
@@ -83,20 +97,20 @@ class controllerInicio extends Controller
     {
         $usuario = User::where('email',$datos->email)->first();
         if($usuario)
-        {   
+        {
             $user=['nombre'=>$usuario->nombre,'email'=>$usuario->email,'codigo'=>$usuario->codigo];
             Mail::send('emails.emailReset',$user,function($message) use ($user){
                 $message->to($user['email'],$user['nombre'])
                 ->subject('Recuperacion de Contraseña');
             });
-        }      
+        }
         return redirect()->route('inicio');
     }
     public function passwordReset($dato)
-    {    
+    {
         $institucion=Institucion::first();
         $categorias=Categoria::all();
-        $ciudades=Ciudad::all();        
+        $ciudades=Ciudad::all();
         $usuario=User::where('codigo',$dato)->first();
         if($usuario)
         {
@@ -104,7 +118,7 @@ class controllerInicio extends Controller
         }else
         {
             return redirect()->route('inicio');
-        }    
+        }
     }
     public function newCodigo()
     {
@@ -140,7 +154,7 @@ class controllerInicio extends Controller
         $institucion=Institucion::first();
         $categorias=Categoria::all();
         $ciudades=Ciudad::all();
-        
+
         $usuario=User::where('cod_face',$datos->codigo)->first();
         if($usuario)
         {
@@ -167,7 +181,7 @@ class controllerInicio extends Controller
         $institucion=Institucion::first();
         $categorias=Categoria::all();
         $ciudades=Ciudad::all();
-        
+
         return view('inicio.contacto',compact('institucion','categorias','categorias','ciudades'));
     }
     public function empresa()
@@ -176,27 +190,27 @@ class controllerInicio extends Controller
         $categorias=Categoria::all();
         $empresas=Empresa::all();
         $ciudades=Ciudad::all();
-        
+
         return view('inicio.empresas',compact('institucion','empresas','categorias','ciudades'));
     }
-    public function ciudad($id)
+    public function ciudad($slug)
     {
         $institucion=Institucion::first();
-        $empresas=Empresa::where('ciudad_id',$id)->orderBy('id','desc')->get();
-        $ciudad=Ciudad::find($id);
+        $ciudad=Ciudad::where('slug',$slug)->first();
+        $empresas=Empresa::where('ciudad_id',$ciudad->id)->orderBy('id','desc')->get();
         $categorias = Categoria::all();
         $ciudades=Ciudad::all();
-        
+
         return view('inicio.ciudades',compact('institucion','categorias','ciudad','empresas','ciudades'));
     }
-    public function categoria($id)
+    public function categoria($slug)
     {
         $institucion=Institucion::first();
-        $empresas=Empresa::where('categoria_id',$id)->orderBy('id','desc')->get();
-        $categoria=Categoria::find($id);
+        $categoria=Categoria::where('slug',$slug)->first();
+        $empresas=Empresa::where('categoria_id',$categoria->id)->orderBy('id','desc')->get();
         $categorias = Categoria::all();
         $ciudades=Ciudad::all();
-        
+
         return view('inicio.categorias',compact('institucion','categorias','categoria','empresas','ciudades'));
     }
     public function mes($numero)
@@ -204,7 +218,7 @@ class controllerInicio extends Controller
         if($numero=='01')
         {
             return $mes="Enero";
-        }else 
+        }else
         {
             if($numero=='02')
             {
@@ -256,7 +270,7 @@ class controllerInicio extends Controller
                                                     return $mes="Noviembre";
                                                 }else
                                                 {
-                                                    if($numero=='13')
+                                                    if($numero=='12')
                                                     {
                                                         return $mes="Diciembre";
                                                     }
@@ -287,7 +301,7 @@ class controllerInicio extends Controller
         $categorias=Categoria::all();
         $actividad = Actividad::all();
         $ciudades=Ciudad::all();
-        
+
         return view('inicio.actividades',compact('institucion','actividad','categorias','actividades','ciudades'));
     }
     public function equipo()
@@ -296,7 +310,7 @@ class controllerInicio extends Controller
         $categorias=Categoria::all();
         $equipos = Equipo::all();
         $ciudades=Ciudad::all();
-        
+
         return view('inicio.equipo',compact('institucion','equipos','categorias','ciudades'));
     }
     public function noticia()
@@ -313,19 +327,19 @@ class controllerInicio extends Controller
         $categorias=Categoria::all();
         $actividad = Actividad::all();
         $ciudades=Ciudad::all();
-        
+
         return view('inicio.noticias',compact('institucion','actividad','categorias','actividades','ciudades'));
     }
     public function registroUsuario($codigo)
-    {   
+    {
         $ciudades=Ciudad::orderBy('id','desc')->pluck('nombre','id');
         $institucion=Institucion::first();
         $categorias=Categoria::all();
         $ciudades=Ciudad::all();
-        $ciudadselect=Ciudad::orderBy('id','desc')->pluck('nombre','id');   
+        $ciudadselect=Ciudad::orderBy('id','desc')->pluck('nombre','id');
         $id=decrypt($codigo);
         $preRegistro=PreRegistro::where('id',$id)->first();
-        if($preRegistro->activo=='2')        
+        if($preRegistro->activo=='2')
         {
             Session::flash('title','Error de solicitud de Registro');
             Session::flash('body','No puede realizar el registro por motivos de ya haberlo realizado o no estar habilitado para el mismo. Contactase con administración para mas información');
@@ -339,7 +353,7 @@ class controllerInicio extends Controller
                 return view('inicio.mensaje-error',compact('categorias','institucion'.'ciudades','ciudadselect'));
             }else
             {
-             if($preRegistro->activo=='0')                
+             if($preRegistro->activo=='0')
                 {
                     return view('inicio.registrar',compact('codigo','institucion','categorias','ciudades','ciudadselect'));
                 }
@@ -362,13 +376,13 @@ class controllerInicio extends Controller
         $institucion=Institucion::first();
         $categorias=Categoria::all();
         $ciudades=Ciudad::all();
-        
+
         $id=decrypt($codigo);
-        
+
         $pre=PreRegistro::where('id',$id)->first();
         User::create([
             'ciudad_id'=>$request->ciudad_id,
-            'nombre'=>$request->nombre, 
+            'nombre'=>$request->nombre,
             'apellido'=>$request->apellido,
             'ci'=>$request->ci,
             'direccion'=>$request->direccion,
@@ -379,10 +393,10 @@ class controllerInicio extends Controller
             'codigo'=>$this->codigo(),
             'tipo'=>'Usuario',
             'activo'=>1,
-            'cod_face'=>$request->ci."FB",   
+            'cod_face'=>$request->ci."FB",
         ]);
         $ci=encrypt($request->ci);
-       
+
         return view('inicio.codigo',compact('institucion','categorias','ci','ciudades'));
     }
     public function codigoUsuario(Request $request,$ci)
@@ -390,7 +404,7 @@ class controllerInicio extends Controller
         $institucion=Institucion::first();
         $categorias=Categoria::all();
         $ciudades=Ciudad::all();
-        
+
         $user=User::where('ci',decrypt($ci))->first();
         if($request->cod_face==null)
         {
@@ -400,12 +414,12 @@ class controllerInicio extends Controller
             ]);
             $pre->save();
             Session::flash('title','Registro Exitoso');
-            Session::flash('body','Cuenta registrada exitosamente, ahora puede ingresar a su panel de control en el login de la pagina');            
+            Session::flash('body','Cuenta registrada exitosamente, ahora puede ingresar a su panel de control en el login de la pagina');
             return view('inicio.mensaje',compact('institucion','categorias','ciudades'));
         }else
         {
             $lider=User::where('cod_face',$request->cod_face)->first();
-            if($lider)        
+            if($lider)
             {
                 $user->fill([
                     'user_id'=>$lider->id
@@ -418,12 +432,12 @@ class controllerInicio extends Controller
                 $pre->save();
 
                 Session::flash('title','Registro Exitoso');
-                Session::flash('body','Cuenta registrada exitosamente, ahora puede ingresar a su panel de control en el login de la pagina');            
+                Session::flash('body','Cuenta registrada exitosamente, ahora puede ingresar a su panel de control en el login de la pagina');
                 return view('inicio.mensaje',compact('institucion','categorias','ciudades'));
             }else
-            {   
-                Session::flash('error','El codigo usuario no fue encontrado, vuelva a intentarlo');                
-                return view('inicio.codigo',compact('institucion','categorias','ci','ciudades'));            
+            {
+                Session::flash('error','El codigo usuario no fue encontrado, vuelva a intentarlo');
+                return view('inicio.codigo',compact('institucion','categorias','ci','ciudades'));
             }
         }
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ciudad extends Model
 {
     protected $table='ciudads';
-    protected $fillable=['nombre','pais_id'];
+    protected $fillable=['nombre','pais_id','slug'];
 
     public function usuarios()
     {

@@ -14,7 +14,7 @@ class Producto extends Model
         if(! empty($imagen)){
               $name = Carbon::now()->second.$imagen->getClientOriginalName();
               $this->attributes['imagen'] = $name;
-              \Storage::disk('local')->put($name, \File::get($imagen));
+              \Storage::disk('productos')->put($name, \File::get($imagen));
         }
     }
 }

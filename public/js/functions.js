@@ -13,7 +13,7 @@ $(window).load(function () {
         if($('.page-loader')[0]) {
             setTimeout (function () {
                 $('.page-loader').fadeOut();
-            }, 1000);
+            }, 500);
 
         }
     }

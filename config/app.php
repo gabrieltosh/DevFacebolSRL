@@ -184,7 +184,10 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-        Proengsoft\JsValidation\JsValidationServiceProvider::class,        
+        Proengsoft\JsValidation\JsValidationServiceProvider::class,    
+        Intervention\Image\ImageServiceProvider::class,
+        Watson\Active\ActiveServiceProvider::class, 
+        Jenssegers\Date\DateServiceProvider::class,
 
     ],
 
@@ -241,6 +244,9 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Active' => Watson\Active\Facades\Active::class,
+        'Date' => Jenssegers\Date\Date::class,
     ],
 
 ];

@@ -1,6 +1,36 @@
 @extends('inicio.template')
 @section('contenido')
-
+<div class="container mt-4">
+  <div class="row">
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <div class="panel panel panel-primary panel-dark text-center">
+      <div class="panel-body">
+        <h2 class="counter">{{$institucion->visitas}}</h2>
+        <i class="fa fa-4x fa-eye"></i>
+        <p class="mt-2 no-mb lead small-caps">Visitas</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <div class="panel panel panel-primary panel-dark text-center">
+      <div class="panel-body">
+        <h2 class="counter">{{$countEmpresas}}</h2>
+        <i class="fa fa-4x fa-building"></i>
+        <p class="mt-2 no-mb lead small-caps">Beneficios en Empresas</p>
+      </div>
+    </div>
+  </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+    <div class="panel panel panel-primary panel-dark text-center">
+      <div class="panel-body">
+        <h2 class="counter">{{$countUsers}}</h2>
+        <i class="fa fa-4x fa-group"></i>
+        <p class="mt-2 no-mb lead small-caps">Personas Afiliadas</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <div class="container mt-4">
   <h2 class="text-center color-primary mb-2 wow fadeInDown animation-delay-4">{{$institucion->titulosomos}}</h2>
   <p class="lead text-center aco wow fadeInDown animation-delay-5 mw-800 center-block mb-4">{{$institucion->qSomos}}.</p>
@@ -31,7 +61,10 @@
     <h2 class="text-center text-light mb-6 wow fadeInDown animation-delay-5"><strong>{{$institucion->titulotrabaja}}</strong></h2>
     <div class="row">
       <div class="col-lg-6 order-lg-2 mb-4  center-block">
-        <img src="{{asset('imagen/institucion/'.$institucion->imgtrabaja)}}" alt="" class="img-fluid center-block wow zoomIn animation-delay-12 "> </div>
+         <div class="card wow zoomIn animation-delay-12">
+              <div data-type="youtube" data-video-id="{{$institucion->imgtrabaja}}"></div>
+          </div>
+       </div>
       <div class="col-lg-6 order-lg-1 pr-6">
         {!!$institucion->trabaja!!}
       </div>

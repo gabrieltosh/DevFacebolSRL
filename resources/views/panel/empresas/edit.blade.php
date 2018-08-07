@@ -49,23 +49,23 @@
                       <span class="input-group-addon"><i class="zmdi zmdi-pin-drop"></i></span>
                       <div class="fg-line">
                           <div class="select">
-                              {!!Form::select('ciudad_id',$ciudades,null,['class'=>'chosen','placeholder'=>$empresa->ciudad_id])!!}
+                              {!!Form::select('ciudad_id',$ciudadess,null,['class'=>'chosen','placeholder'=>$empresa->ciudad_id])!!}
                           </div>
                       </div>
                   </div>
 
-                  <br> 
+                  <br>
 
                   <div class="input-group">
                       <span class="input-group-addon"><i class="zmdi zmdi-collection-bookmark"></i></span>
                       <div class="fg-line">
                           <div class="select">
-                              {!!Form::select('categoria_id',$categorias,null,['class'=>'chosen','placeholder'=>$empresa->categoria_id])!!}
+                              {!!Form::select('categoria_id',$categoriass,null,['class'=>'chosen','placeholder'=>$empresa->categoria_id])!!}
                           </div>
                       </div>
                   </div>
 
-                  <br> 
+                  <br>
               </div>
                   <div class="col-sm-4">
                   <div class="input-group">
@@ -90,7 +90,7 @@
                       <span class="input-group-addon"><i class="zmdi zmdi-flash"></i></span>
                       <div class="fg-line">
                           {!!Form::text('promocion',null,['class'=>'form-control','placeholder'=>'Promocion'])!!}
-                          
+
                       </div>
                   </div>
 
@@ -99,7 +99,7 @@
                   <div class="input-group">
                       <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
                       <div class="fg-line">
-                          {!!Form::number('telefono',null,['class'=>'form-control','placeholder'=>'Telefono'])!!}
+                          {!!Form::text('telefono',null,['class'=>'form-control','placeholder'=>'Telefono'])!!}
                       </div>
                   </div>
               </div>
@@ -113,7 +113,7 @@
                       </div>
                   </div>
 
-                  <br> 
+                  <br>
                    <div class="input-group">
                       <span class="input-group-addon"><i class="zmdi zmdi-pin-drop"></i></span>
                       <div class="fg-line">
@@ -123,7 +123,7 @@
                       </div>
                   </div>
 
-                  <br> 
+                  <br>
                   <div class="input-group">
                       <span class="input-group-addon"><i class="zmdi zmdi-facebook-box"></i></span>
                       <div class="fg-line">
@@ -133,7 +133,7 @@
                       </div>
                   </div>
 
-                  <br> 
+                  <br>
                   <div class="input-group">
                       <span class="input-group-addon"><i class="zmdi zmdi-rss"></i></span>
                       <div class="fg-line">
@@ -143,8 +143,7 @@
                       </div>
                   </div>
 
-                  <br> 
-                   
+                  <br>
 
               </div>
               </div>
@@ -159,14 +158,14 @@
                       </div>
                   </div>
 
-                  <br> 
+                  <br>
                   <div class="input-group">
-                      <span class="input-group-addon"><i class="zmdi zmdi-comment-alt-text"></i></span>
+                      <span class="input-group-addon"><i class="zmdi zmdi-image"></i></span>
                       <div class="fg-line">
-                          {!!Form::textarea('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion de la Empresa','rows'=>5])!!}
+                           <p class="f-500 c-black m-b-15"><strong>Imagen Actual :</strong> </p>
+                          <img width="100px" height="100px" src="{{asset('imagen/empresas/'.$empresa->imagen)}}" alt="">
                       </div>
                   </div>
-                  <br>
                   </div>
                   <div class="col-sm-4">
                      <div class="input-group">
@@ -187,20 +186,50 @@
                   </div>
                   </div>
                   <div class="col-sm-4">
-                       <div class="input-group">
-                      <span class="input-group-addon"><i class="zmdi zmdi-image"></i></span>
+                    <p><strong>Direccion en lat y long</strong></p>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="zmdi zmdi-pin-drop"></i></span>
                       <div class="fg-line">
-                           <p class="f-500 c-black m-b-15"><strong>Imagen Actual :</strong> </p>
-                          <img width="100px" height="100px" src="{{asset('imagen/empresas/'.$empresa->imagen)}}" alt="">
+                          <div class="select">
+                              {!!Form::text('latitud',null,['class'=>'form-control','placeholder'=>'Latitud'])!!}
+                          </div>
                       </div>
-                  </div>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="zmdi zmdi-pin-drop"></i></span>
+                      <div class="fg-line">
+                          <div class="select">
+                              {!!Form::text('longitud',null,['class'=>'form-control','placeholder'=>'Longitud'])!!}
+                          </div>
+                      </div>
+                    </div>
                   </div>
               </div>
-
-        </div>
-    </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1">
+              </div>
+              <div class="col-sm-10">
+                <p><strong>Descripcion :</strong></p>
+                 <div class="input-group">
+                    <span class="input-group-addon"><i class="zmdi zmdi-comment-alt-text"></i></span>
+                    <div class="fg-line">
+                        {!!Form::textarea('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion de la Empresa','rows'=>5])!!}
+                    </div>
+                </div>
+                <br>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+         </div>
 {!!Form::close()!!}
 @stop
 @section('script')
 	{!! JsValidator::formRequest('App\Http\Requests\RequestEmpresaUpdate','#formulario')!!}
+  <script>
+    $(document).ready(function(){
+      CKEDITOR.replace( 'descripcion' );
+    });
+  </script>
 @stop

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Carbon\Carbon;
+use App\Publicacion;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -50,5 +51,13 @@ class User extends Authenticatable
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
+    }
+    public function publicaciones()
+    {
+      return $this->hasMany(Publicacion::class);
+    }
+    public function likes()
+    {
+      return $this->hasMany(Likes::class);
     }
 }

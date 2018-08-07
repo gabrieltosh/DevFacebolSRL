@@ -58,6 +58,7 @@ return [
         'categorias' => [
             'driver' => 'local',
             'root' => base_path().'/public/imagen/categorias',
+            'visibility' => 'public', 
         ],
         'equipos' => [
             'driver' => 'local',
@@ -66,6 +67,14 @@ return [
         'institucion' => [
             'driver' => 'local',
             'root' => base_path().'/public/imagen/institucion',
+        ],
+        'publicaciones' => [
+            'driver' => 'local',
+            'root' => base_path().'/public/imagen/publicaciones',
+        ],
+        'productos' => [
+            'driver' => 'local',
+            'root' => base_path().'/public/imagen/productos',
         ],
         'imagen' => [
             'driver' => 'local',

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
   
-<!-- Mirrored from agmstudio.io/themes/material-style/2.2.2/page-timeline_left.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Mar 2018 23:12:24 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#333">
     <title>Facebol</title>
-    <meta name="description" content="Material Style Theme">
+    @include('inicio.partes.meta')    
+    
     <link rel="shortcut icon" href="assets/img/favicon30f4.png?v=3">
     @include('inicio.partes.styles.css')
     <!--[if lt IE 9]>
@@ -58,10 +58,10 @@
                       <div class="card-header">
                         <h3 class="card-title text-center">{{$actividad->nombre}}</h3>
                       </div>
-                      <div class="card-body">
+                      <div class="card-body des">
                         <div class="row">
                            <div class="col-md-12">
-                            <p>{!!$actividad->descripcion!!}</p>
+                            <article>{!!$actividad->descripcion!!}</article>
                           </div>
                           <div class="col-md-12 text-center">
                             <img src="{{asset('imagen/actividades/'.$actividad->imagen)}}" alt="" class="img-fluid mb-2" width="350px" height="250px"> </div>

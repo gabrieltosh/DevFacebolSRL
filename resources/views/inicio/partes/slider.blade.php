@@ -36,7 +36,7 @@
                         <!--<a href="javascript:void(0);" class="btn btn-warning btn-raised animated fadeInLeft animation-delay-24 mr-2">
                           <i class="zmdi zmdi-settings"></i> Personalize</a>-->
                         <a href="javascript:void(0);" class="btn btn-success btn-raised animated fadeInRight animation-delay-24" data-toggle="modal" data-target="#ms-account-modal">
-                          <i class="zmdi zmdi-account"></i> Iniciar Session</a>
+                          <i class="zmdi zmdi-account"></i> Iniciar Sesión</a>
                       </div>
                     </div>
                   </div>

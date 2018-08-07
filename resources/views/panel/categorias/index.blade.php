@@ -8,6 +8,7 @@
         	</div>
         	<div class="col-sm-6">
         		<div class="pull-right">
+                    <br>
         			<a href="{{route('categorias.create')}}" class="btn btn-info"><i class="zmdi zmdi-plus"></i> Nuevo Registro</a>
         		</div>
         	</div>
@@ -32,11 +33,11 @@
 	                        <td class="text-center">{{$categoria->nombre}}</td>
 	                        <td class="text-center">{{ucwords($categoria->descripcion)}}</td>
 	                        <td class="text-center">{{$categoria->imagen}}</td>
-	                        <td  class="text-center"> 
-	                        </td> 
-	                    </tr>      	                   
+	                        <td  class="text-center">
+	                        </td>
+	                    </tr>
                         @include('panel.categorias.delete')
-	            @endforeach       
+	            @endforeach
 	        </tbody>
 	    </table>
 	</div>
@@ -63,7 +64,7 @@
 	  "hideMethod": "fadeOut"
 	};
 	toastr.info("{{\Session::get('message')}}");
-    
+
 	});
   	$("#data-table-command").bootgrid({
         css: {

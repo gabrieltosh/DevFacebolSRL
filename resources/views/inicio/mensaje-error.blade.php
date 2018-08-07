@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-  
-<!-- Mirrored from agmstudio.io/themes/material-style/2.2.2/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Mar 2018 23:06:58 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#333">
     <title>Facebol</title>
-    <meta name="description" content="Material Style Theme">
+    @include('inicio.partes.meta')    
+    
     @include('inicio.partes.styles.css')
 
   </head>

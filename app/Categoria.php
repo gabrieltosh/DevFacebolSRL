@@ -7,7 +7,7 @@ use Carbon\Carbon;
 class Categoria extends Model
 {
      protected $table='categorias';
-    protected $fillable=['nombre','descripcion','imagen'];
+    protected $fillable=['nombre','descripcion','imagen','slug'];
 
      public function setImagenAttribute($imagen){
         if(! empty($imagen)){

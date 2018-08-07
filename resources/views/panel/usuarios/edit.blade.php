@@ -49,7 +49,7 @@
                       <span class="input-group-addon"><i class="zmdi zmdi-account-box-phone"></i></span>
                       <div class="fg-line">
                           {!!Form::number('ci',null,['class'=>'form-control','placeholder'=>'Carnet de Identidad'])!!}
-                          
+
                       </div>
                   </div>
 
@@ -85,7 +85,7 @@
                       <span class="input-group-addon"><i class="zmdi zmdi-key"></i></span>
                       <div class="fg-line">
                           {!!Form::password('password',['class'=>'form-control','placeholder'=>'Contraseña'])!!}
-                          
+
                       </div>
                   </div>
 
@@ -103,12 +103,12 @@
                       <span class="input-group-addon"><i class="zmdi zmdi-pin-drop"></i></span>
                       <div class="fg-line">
                           <div class="select">
-                              {!!Form::select('ciudad_id',$ciudades,null,['class'=>'chosen','placeholder'=>$usuario->ciudad_id])!!}
+                              {!!Form::select('ciudad_id',$ciudadess,null,['class'=>'chosen','placeholder'=>$usuario->ciudad_id])!!}
                           </div>
                       </div>
                   </div>
 
-                  <br> 
+                  <br>
 
                    <div class="input-group">
                       <span class="input-group-addon"><i class="zmdi zmdi-upload"></i></span>
@@ -143,7 +143,7 @@
                                   @endif
                               </div>
                           </div>
-                          
+
                       </div>
                   </div>
                   <div class="col-sm-4">

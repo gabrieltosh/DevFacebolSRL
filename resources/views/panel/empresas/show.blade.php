@@ -23,7 +23,7 @@
                                 <li>
                                     <i class="zmdi zmdi-comment-alt-text"></i>
                                     <address class="m-b-0 ng-binding">
-                                        <strong>Descripcion : </strong> {{$empresa->descripcion}}
+                                        <strong>Descripcion : </strong> {!!$empresa->descripcion!!}
                                     </address>
                                 </li>
                                 <li>

@@ -17,7 +17,7 @@ class CreateEmpresasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->text('descripcion');
-            $table->integer('telefono')->nullable();
+            $table->string('telefono')->nullable();
             $table->string('email');
             $table->string('facebook');
             $table->string('direccion')->nullable();
@@ -29,6 +29,9 @@ class CreateEmpresasTable extends Migration
             $table->string('web')->nullable();
             $table->integer('categoria_id')->unsigned();
             $table->string('imagen');
+            $table->string('latitud')->nullable();
+            $table->string('longitud')->nullable();
+            $table->string('slug');
             $table->integer('usuario_id')->unsigned();
             $table->integer('ciudad_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');

@@ -8786,7 +8786,7 @@ button.close {
  * Scale 3d
  */
 
-/* 
+/*
  * Load Font
  */
 
@@ -9151,11 +9151,11 @@ button.close {
 
 /*!
  * Waves v0.7.4
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
- * https://github.com/fians/Waves/blob/master/LICENSE 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
  */
 
 .waves-effect {
@@ -9314,8 +9314,8 @@ a.waves-effect .waves-ripple {
  * https://github.com/danlevan/google-material-color
  */
 
-/* 
- * Load Website related LESS files 
+/*
+ * Load Website related LESS files
  */
 
 /*
@@ -9732,7 +9732,7 @@ a.waves-effect .waves-ripple {
   display: inline-block !important;
 }
 
-/* 
+/*
  * Material Background Colors
  */
 
@@ -9933,7 +9933,7 @@ a.waves-effect .waves-ripple {
 }
 
 /*
- * Border Radius 
+ * Border Radius
  */
 
 .brd-2 {
@@ -10616,7 +10616,7 @@ pre {
   z-index: 100;
 }
 
-/*---------------------------------- 
+/*----------------------------------
     User Alerts
 -----------------------------------*/
 
@@ -13363,7 +13363,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 /*
- * Lightbox  
+ * Lightbox
  */
 
 .lightbox .lightbox-item > img {

@@ -26,7 +26,7 @@ class RequestEmpresaUpdate extends FormRequest
         return [
             'nombre'=>'required',
             'descripcion'=>'required',
-            'telefono'=>'required|min:7|max:8',
+            'telefono'=>'required',
             'email'=>'required',
             'facebook'=>'required',
             'promocion'=>'required',

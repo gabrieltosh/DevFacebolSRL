@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Mirrored from agmstudio.io/themes/material-style/2.2.2/portfolio-cards.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Mar 2018 23:13:23 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#333">
     <title>Facebol</title>
-    <meta name="description" content="Material Style Theme">
+    @include('inicio.partes.meta')    
+    
     <link rel="shortcut icon" href="assets/img/favicon30f4.png?v=3">
     @include('inicio.partes.styles.css')
     <!--[if lt IE 9]>
@@ -49,7 +50,7 @@
               <div class="col-lg-4 col-md-6">
                 <div class="card width-auto text-center">
                   <figure class="ms-thumbnail ms-thumbnail-horizontal">
-                    <img src="{{asset('imagen')}}/{{$empresa->imagen}}" alt="" class="img-fluid">
+                    <img src="{{asset('imagen/empresas')}}/{{$empresa->imagen}}" alt="" class="img-fluid">
                     <figcaption class="ms-thumbnail-caption text-center">
                       <div class="ms-thumbnail-caption-content">
                         <h4 class="ms-thumbnail-caption-title mb-2 ">{{$empresa->nombre}}</h4>
@@ -72,7 +73,7 @@
                     <h4 class="color-primary">{{$empresa->nombre}}</h4>
                     <a href="javascript:void(0)" class="btn btn-info">
                       <i class="zmdi zmdi-star"></i> {{$empresa->descuento}}</a>
-                    <a href="{{route('detalleEmpresa',$empresa->id)}}" class="btn btn-warning btn-raised">
+                    <a href="{{route('detalleEmpresa',$empresa->slug)}}" class="btn btn-warning btn-raised">
                       <i class="zmdi zmdi-caret-right-circle"></i>   Leer mas...</a>
                   </div>
                 </div>
@@ -92,5 +93,4 @@
   @include('inicio.partes.styles.js')
   </body>
 
-<!-- Mirrored from agmstudio.io/themes/material-style/2.2.2/portfolio-cards.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Mar 2018 23:13:23 GMT -->
 </html>
